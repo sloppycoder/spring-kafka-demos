@@ -1,0 +1,21 @@
+# see below class for configurations
+# https://github.com/spring-projects/spring-boot/blob/v2.1.1.RELEASE/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/kafka/KafkaProperties.java
+spring:
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      client-id: demo-producer
+      # transaction-id-prefix: blah
+      acks: all
+      batch-size: 4096
+      buffer-memory: 67108864
+      compression-type: none
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      properties:
+        max.in.flight.requests.per.connection: 1
+        enable.idempotence: true
+
+
+topics:
+  card-transaction: card-trans-1
